@@ -54,8 +54,6 @@ func GoRandomCuaca() {
 	for {
 		Cuaca.Water = rand.Intn(20)
 		Cuaca.Wind = rand.Intn(20)
-		Cuaca.StatusWater = "Aman"
-		Cuaca.StatusWind = "Aman"
 
 		if Cuaca.Water <= 5 {
 			Cuaca.StatusWater = "Aman"
