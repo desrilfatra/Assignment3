@@ -18,17 +18,11 @@ var Cuaca entity.Status
 func main() {
 	go GoRandomCuaca()
 	mux := http.NewServeMux()
-	endpoint := http.HandlerFunc(statuscuaca)
-	mux.Handle("/Cuaca", MiddlewareCuaca(endpoint))
+
+	mux.Handle("/Cuaca", http.HandlerFunc(statuscuaca))
 	fmt.Println("Connect port")
 	err := http.ListenAndServe(":8080", mux)
 	log.Fatal(err)
-}
-
-func MiddlewareCuaca(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		next.ServeHTTP(w, r)
-	})
 }
 
 func statuscuaca(w http.ResponseWriter, r *http.Request) {
